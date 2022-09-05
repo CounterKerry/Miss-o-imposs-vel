@@ -27,16 +27,17 @@ function setup() {
 function draw() {
     background(51);
 
-    if (keyDown("space")) {
-        innocent.velocityY = -7;
+    if (keyDown("space") && innocent.y > 489) {
+        innocent.velocityY = -12.5;
         innocent.changeAnimation("innocentJumperson", innocentJump);
-    } else if (keyDown("space")) {
-        innocent.changeAnimation(innocentImg);
     }
 
-    innocent.velocityY += 0.7;
+    if (innocent.isTouching(invisibleGround)) {
+        innocent.changeAnimation("innocentImg");
+    }
+
+    innocent.velocityY += 1.5;
     innocent.collide(invisibleGround);
 
     drawSprites();
 }
-
